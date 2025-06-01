@@ -55,7 +55,7 @@ export default function Home() {
           </div>
           <div className="flex-1 flex justify-center">
             <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-primary">
-              <Image src="/image/abdulquyum.jpg" alt="Profile" fill className="object-cover" priority />
+              <Image src="/abdulquyum.jpg?height=320&width=320" alt="Profile" fill className="object-cover" priority />
             </div>
           </div>
         </section>
