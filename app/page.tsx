@@ -222,11 +222,11 @@ export default function Home() {
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             <SkillCard
               title="Frontend Development"
-              items={["React", "", "HTML/CSS", "JavaScript", "TypeScript"]}
+              items={["React", "HTML/CSS", "JavaScript", "TypeScript", "Bootstrap"]}
             />
             <SkillCard title="Backend Development" items={["PHP", "Laravel", "Python", "Flask", "RESTful APIs"]} />
-            <SkillCard title="Databases" items={["MongoDB", "PostgreSQL", "MySQL", "Firebase", ""]} />
-            <SkillCard title="DevOps & Tools" items={["Git", "Docker", "", "", "Vercel"]} />
+            <SkillCard title="Databases" items={["MongoDB", "PostgreSQL", "MySQL", "Firebase"]} />
+            <SkillCard title="DevOps & Tools" items={["Git", "CLI", "Trello", "unix system", "Vercel"]} />
           </div>
         </section>
 
@@ -239,12 +239,12 @@ export default function Home() {
               <div className="space-y-4">
                 <div className="flex items-center gap-3">
                   <Mail className="h-5 w-5 text-primary" />
-                  <span>your.email@example.com</span>
+                  <span>ajumobiabdulquyum@gmail.com</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <Linkedin className="h-5 w-5 text-primary" />
                   <Link href="#" className="hover:text-primary">
-                    linkedin.com/in/yourname
+                    linkedin.com/in/abdqooyum
                   </Link>
                 </div>
                 <div className="flex items-center gap-3">
