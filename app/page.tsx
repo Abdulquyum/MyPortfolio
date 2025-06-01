@@ -36,7 +36,7 @@ export default function Home() {
         <section className="py-20 md:py-32 flex flex-col md:flex-row items-center gap-8 md:gap-16">
           <div className="flex-1 space-y-4">
             <h1 className="text-4xl md:text-6xl font-bold tracking-tight">
-              Hi, I'm <span className="text-primary">Your Name</span>
+              Hi, I'm <span className="text-primary">Ajumobi Abdulquyum</span>
             </h1>
             <p className="text-xl text-muted-foreground">
               Full Stack Developer specializing in building exceptional digital experiences
@@ -82,19 +82,19 @@ export default function Home() {
             <div className="space-y-4">
               <div className="flex items-center gap-2">
                 <span className="font-semibold min-w-[100px]">Name:</span>
-                <span>Your Name</span>
+                <span>Ajumobi Abdulquyum</span>
               </div>
               <div className="flex items-center gap-2">
                 <span className="font-semibold min-w-[100px]">Email:</span>
-                <span>your.email@example.com</span>
+                <span>ajumobiabdulquyum@gmail.com</span>
               </div>
               <div className="flex items-center gap-2">
                 <span className="font-semibold min-w-[100px]">Location:</span>
-                <span>City, Country</span>
+                <span>Lagos, Nigeria</span>
               </div>
               <div className="flex items-center gap-2">
                 <span className="font-semibold min-w-[100px]">Education:</span>
-                <span>Bachelor's in Computer Science</span>
+                <span>Graduated from ALX, Africa</span>
               </div>
               <div className="pt-4">
                 <Button variant="outline" asChild>
@@ -222,11 +222,11 @@ export default function Home() {
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             <SkillCard
               title="Frontend Development"
-              items={["React", "Next.js", "HTML/CSS", "JavaScript", "TypeScript"]}
+              items={["React", "", "HTML/CSS", "JavaScript", "TypeScript"]}
             />
-            <SkillCard title="Backend Development" items={["Node.js", "Express", "Python", "Django", "RESTful APIs"]} />
-            <SkillCard title="Databases" items={["MongoDB", "PostgreSQL", "MySQL", "Firebase", "Prisma"]} />
-            <SkillCard title="DevOps & Tools" items={["Git", "Docker", "AWS", "CI/CD", "Vercel"]} />
+            <SkillCard title="Backend Development" items={["PHP", "Laravel", "Python", "Flask", "RESTful APIs"]} />
+            <SkillCard title="Databases" items={["MongoDB", "PostgreSQL", "MySQL", "Firebase", ""]} />
+            <SkillCard title="DevOps & Tools" items={["Git", "Docker", "", "", "Vercel"]} />
           </div>
         </section>
 
@@ -250,7 +250,7 @@ export default function Home() {
                 <div className="flex items-center gap-3">
                   <Github className="h-5 w-5 text-primary" />
                   <Link href="#" className="hover:text-primary">
-                    github.com/yourusername
+                    github.com/Abdulquyum
                   </Link>
                 </div>
               </div>
@@ -268,9 +268,9 @@ export default function Home() {
       {/* Footer */}
       <footer className="border-t py-8">
         <div className="container flex flex-col md:flex-row justify-between items-center">
-          <p className="text-sm text-muted-foreground">© {new Date().getFullYear()} Your Name. All rights reserved.</p>
+          <p className="text-sm text-muted-foreground">© {new Date().getFullYear()} Abdulquyum. All rights reserved.</p>
           <div className="flex gap-4 mt-4 md:mt-0">
-            <Link href="#" className="text-muted-foreground hover:text-primary">
+            <Link href="github.com/Abdulquyum" className="text-muted-foreground hover:text-primary">
               <Github className="h-5 w-5" />
               <span className="sr-only">GitHub</span>
             </Link>
@@ -278,7 +278,7 @@ export default function Home() {
               <Linkedin className="h-5 w-5" />
               <span className="sr-only">LinkedIn</span>
             </Link>
-            <Link href="#" className="text-muted-foreground hover:text-primary">
+            <Link href="mailto:abdulquyumajumobi@gmail.com" className="text-muted-foreground hover:text-primary">
               <Mail className="h-5 w-5" />
               <span className="sr-only">Email</span>
             </Link>
