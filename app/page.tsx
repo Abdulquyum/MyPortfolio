@@ -25,9 +25,9 @@ export default function Home() {
               Contact
             </Link>
           </nav>
-          <Button variant="outline" size="sm">
+          {/* <Button variant="outline" size="sm">
             Resume
-          </Button>
+          </Button> */}
         </div>
       </header>
 
@@ -76,7 +76,7 @@ export default function Home() {
               </p>
               <p className="text-lg">
                 When I'm not coding, you can find me exploring new technologies, contributing to open-source projects,
-                or enjoying outdoor activities.
+                or building side projects.
               </p>
             </div>
             <div className="space-y-4">
@@ -98,7 +98,7 @@ export default function Home() {
               </div>
               <div className="pt-4">
                 <Button variant="outline" asChild>
-                  <Link href="#">
+                  <Link href="../public/updated-Ajumobi-Abdulquyum-CV.pdf">
                     <FileText className="mr-2 h-4 w-4" />
                     Download Resume
                   </Link>
@@ -118,18 +118,19 @@ export default function Home() {
                 <Image src="/placeholder.svg?height=200&width=400" alt="Project 1" fill className="object-cover" />
               </div>
               <CardContent className="p-6">
-                <h3 className="text-xl font-bold mb-2">E-commerce Platform</h3>
+                <h3 className="text-xl font-bold mb-2">EasyLendPC</h3>
                 <p className="text-muted-foreground mb-4">
-                  A full-featured online store with product management, cart functionality, and payment processing.
+                  EasyLendPC is a platform that allows users to rent and lend computers to each other.
                 </p>
                 <div className="flex flex-wrap gap-2 mb-4">
-                  <span className="bg-primary/10 text-primary text-xs px-2 py-1 rounded">React</span>
-                  <span className="bg-primary/10 text-primary text-xs px-2 py-1 rounded">Node.js</span>
-                  <span className="bg-primary/10 text-primary text-xs px-2 py-1 rounded">MongoDB</span>
+                  <span className="bg-primary/10 text-primary text-xs px-2 py-1 rounded">HTML/CSS</span>
+                  <span className="bg-primary/10 text-primary text-xs px-2 py-1 rounded">Python</span>
+                  <span className="bg-primary/10 text-primary text-xs px-2 py-1 rounded">Django</span>
+                  <span className="bg-primary/10 text-primary text-xs px-2 py-1 rounded">SQLite</span>
                 </div>
                 <div className="flex gap-3">
                   <Button size="sm" variant="outline" asChild>
-                    <Link href="#">
+                    <Link href="https://github.com/Abdulquyum/EasyLendPC">
                       <Github className="h-4 w-4 mr-1" />
                       Code
                     </Link>
@@ -150,25 +151,25 @@ export default function Home() {
                 <Image src="/placeholder.svg?height=200&width=400" alt="Project 2" fill className="object-cover" />
               </div>
               <CardContent className="p-6">
-                <h3 className="text-xl font-bold mb-2">Task Management App</h3>
+                <h3 className="text-xl font-bold mb-2">ResourceHub</h3>
                 <p className="text-muted-foreground mb-4">
-                  A productivity application for organizing tasks with drag-and-drop functionality and team
-                  collaboration.
+                  ResourceHub is a platform that allows users to share and find resources with each other.
                 </p>
                 <div className="flex flex-wrap gap-2 mb-4">
-                  <span className="bg-primary/10 text-primary text-xs px-2 py-1 rounded">Next.js</span>
-                  <span className="bg-primary/10 text-primary text-xs px-2 py-1 rounded">TypeScript</span>
-                  <span className="bg-primary/10 text-primary text-xs px-2 py-1 rounded">Prisma</span>
+                  <span className="bg-primary/10 text-primary text-xs px-2 py-1 rounded">HTML/CSS</span>
+                  <span className="bg-primary/10 text-primary text-xs px-2 py-1 rounded">Python</span>
+                  <span className="bg-primary/10 text-primary text-xs px-2 py-1 rounded">Flask</span>
+                  <span className="bg-primary/10 text-primary text-xs px-2 py-1 rounded">MySQL</span>
                 </div>
                 <div className="flex gap-3">
                   <Button size="sm" variant="outline" asChild>
-                    <Link href="#">
+                    <Link href="https://github.com/NiniolaX/ResourceHub">
                       <Github className="h-4 w-4 mr-1" />
                       Code
                     </Link>
                   </Button>
                   <Button size="sm" asChild>
-                    <Link href="#">
+                    <Link href="https://resourcehub-0szu.onrender.com/">
                       <ExternalLink className="h-4 w-4 mr-1" />
                       Demo
                     </Link>
@@ -183,9 +184,9 @@ export default function Home() {
                 <Image src="/placeholder.svg?height=200&width=400" alt="Project 3" fill className="object-cover" />
               </div>
               <CardContent className="p-6">
-                <h3 className="text-xl font-bold mb-2">AI Content Generator</h3>
+                <h3 className="text-xl font-bold mb-2">Odiolowo Connect</h3>
                 <p className="text-muted-foreground mb-4">
-                  A tool that leverages AI to help users create blog posts, social media content, and marketing copy.
+                  A website to ease access for residents in Odi-olowo, Providing them with a platform to register for youth empowerment programs.
                 </p>
                 <div className="flex flex-wrap gap-2 mb-4">
                   <span className="bg-primary/10 text-primary text-xs px-2 py-1 rounded">Vue.js</span>
@@ -194,7 +195,7 @@ export default function Home() {
                 </div>
                 <div className="flex gap-3">
                   <Button size="sm" variant="outline" asChild>
-                    <Link href="#">
+                    <Link href="https://github.com/Abdulquyum/odiolowoConnect">
                       <Github className="h-4 w-4 mr-1" />
                       Code
                     </Link>
@@ -211,7 +212,7 @@ export default function Home() {
           </div>
           <div className="flex justify-center mt-8">
             <Button variant="outline" asChild>
-              <Link href="#">View All Projects</Link>
+              <Link href="https://github.com/Abdulquyum?tab=repositories">View All Projects</Link>
             </Button>
           </div>
         </section>
