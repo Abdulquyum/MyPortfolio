@@ -343,10 +343,10 @@ function ContactForm() {
       }
 
       await emailjs.send(
-        "YOUR_SERVICE_ID", // Replace with your EmailJS service ID
-        "YOUR_TEMPLATE_ID", // Replace with your EmailJS template ID
+        "service_wl3ol08",
+        "template_qt0qmz8",
         templateParams,
-        "YOUR_PUBLIC_KEY" // Replace with your EmailJS public key
+        "fAzDDUZy5-HGNEf2b"
       )
 
       toast.success("Message sent successfully!")
