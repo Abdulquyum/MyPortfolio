@@ -189,9 +189,11 @@ export default function Home() {
                   A website to ease access for residents in Odi-olowo, Providing them with a platform to register for youth empowerment programs.
                 </p>
                 <div className="flex flex-wrap gap-2 mb-4">
-                  <span className="bg-primary/10 text-primary text-xs px-2 py-1 rounded">Vue.js</span>
-                  <span className="bg-primary/10 text-primary text-xs px-2 py-1 rounded">Python</span>
-                  <span className="bg-primary/10 text-primary text-xs px-2 py-1 rounded">OpenAI API</span>
+                  <span className="bg-primary/10 text-primary text-xs px-2 py-1 rounded">HTML/CSS</span>
+                  <span className="bg-primary/10 text-primary text-xs px-2 py-1 rounded">Bootstrap</span>
+                  <span className="bg-primary/10 text-primary text-xs px-2 py-1 rounded">PHP</span>
+                  <span className="bg-primary/10 text-primary text-xs px-2 py-1 rounded">Laravel</span>
+                  <span className="bg-primary/10 text-primary text-xs px-2 py-1 rounded">MySQL</span>
                 </div>
                 <div className="flex gap-3">
                   <Button size="sm" variant="outline" asChild>
