@@ -3,6 +3,9 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Github, Mail, FileText, ExternalLink, Linkedin } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
+import { useState } from "react"
+import emailjs from "@emailjs/browser"
+import { toast } from "sonner"
 
 export default function Home() {
   return (
@@ -309,8 +312,60 @@ function SkillCard({ title, items }: { title: string; items: string[] }) {
 }
 
 function ContactForm() {
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
+  })
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }))
+  }
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setIsSubmitting(true)
+
+    try {
+      // Replace these with your actual EmailJS credentials
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        subject: formData.subject,
+        message: formData.message,
+        to_name: "Ajumobi Abdulquyum",
+      }
+
+      await emailjs.send(
+        "YOUR_SERVICE_ID", // Replace with your EmailJS service ID
+        "YOUR_TEMPLATE_ID", // Replace with your EmailJS template ID
+        templateParams,
+        "YOUR_PUBLIC_KEY" // Replace with your EmailJS public key
+      )
+
+      toast.success("Message sent successfully!")
+      setFormData({
+        name: "",
+        email: "",
+        subject: "",
+        message: "",
+      })
+    } catch (error) {
+      console.error("Error sending email:", error)
+      toast.error("Failed to send message. Please try again.")
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
+
   return (
-    <form className="space-y-4">
+    <form onSubmit={handleSubmit} className="space-y-4">
       <div className="grid grid-cols-2 gap-4">
         <div className="space-y-2">
           <label htmlFor="name" className="text-sm font-medium">
@@ -318,6 +373,10 @@ function ContactForm() {
           </label>
           <input
             id="name"
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
+            required
             className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
             placeholder="Your name"
           />
@@ -328,7 +387,11 @@ function ContactForm() {
           </label>
           <input
             id="email"
+            name="email"
             type="email"
+            value={formData.email}
+            onChange={handleChange}
+            required
             className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
             placeholder="Your email"
           />
@@ -340,6 +403,10 @@ function ContactForm() {
         </label>
         <input
           id="subject"
+          name="subject"
+          value={formData.subject}
+          onChange={handleChange}
+          required
           className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
           placeholder="Subject"
         />
@@ -350,12 +417,16 @@ function ContactForm() {
         </label>
         <textarea
           id="message"
+          name="message"
+          value={formData.message}
+          onChange={handleChange}
+          required
           className="flex min-h-[120px] w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
           placeholder="Your message"
         />
       </div>
-      <Button type="submit" className="w-full">
-        Send Message
+      <Button type="submit" className="w-full" disabled={isSubmitting}>
+        {isSubmitting ? "Sending..." : "Send Message"}
       </Button>
     </form>
   )
