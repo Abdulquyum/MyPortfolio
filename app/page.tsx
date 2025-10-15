@@ -154,7 +154,7 @@ export default function Home() {
             {/* Project 2 */}
             <Card className="overflow-hidden">
               <div className="relative h-48">
-                <Image src="/placeholder.svg?height=200&width=400" alt="Project 1" fill className="object-cover" />
+                <Image src="https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8bGFwdG9wfGVufDB8fDB8fHww&auto=format&fit=crop&q=60&w=600" alt="Project 1" fill className="object-cover" />
               </div>
               <CardContent className="p-6">
                 <h3 className="text-xl font-bold mb-2">EasyLendPC</h3>
@@ -220,7 +220,7 @@ export default function Home() {
             {/* Project 4 */}
             <Card className="overflow-hidden">
               <div className="relative h-48">
-                <Image src="/placeholder.svg?height=200&width=400" alt="Project 3" fill className="object-cover" />
+                <Image src="https://www.odiolowoojuwoye.lg.gov.ng/public/image/logo2.png" alt="Project 3" fill className="object-cover" />
               </div>
               <CardContent className="p-6">
                 <h3 className="text-xl font-bold mb-2">Odiolowo Connect</h3>
