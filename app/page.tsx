@@ -115,7 +115,41 @@ export default function Home() {
         <section id="projects" className="py-16 scroll-mt-16">
           <h2 className="text-3xl font-bold mb-8 text-center">My Projects</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {/* Project 1 */}
+            {/* project 1 */}
+            <Card className="overflow-hidden">
+              <div className="relative h-48">
+                <Image src="/placeholder.svg?height=200&width=400" alt="Project 1" fill className="object-cover" />
+              </div>
+              <CardContent className="p-6">
+                <h3 className="text-xl font-bold mb-2">Qiblatayn Travels</h3>
+                <p className="text-muted-foreground mb-4">
+                  Specialize in Hajj and Umrah Packages. I implement the Registration forms for the Hajj and Umrrah Pilgrims.
+                </p>
+                <div className="flex flex-wrap gap-2 mb-4">
+                  <span className="bg-primary/10 text-primary text-xs px-2 py-1 rounded">HTML/CSS</span>
+                  <span className="bg-primary/10 text-primary text-xs px-2 py-1 rounded">Bootstrap</span>
+                  <span className="bg-primary/10 text-primary text-xs px-2 py-1 rounded">PHP</span>
+                  <span className="bg-primary/10 text-primary text-xs px-2 py-1 rounded">Laravel</span>
+                  <span className="bg-primary/10 text-primary text-xs px-2 py-1 rounded">MariaDB</span>
+                </div>
+                <div className="flex gap-3">
+                  {/* <Button size="sm" variant="outline" asChild>
+                    <Link href="https://github.com/Abdulquyum/">
+                      <Github className="h-4 w-4 mr-1" />
+                      Code
+                    </Link>
+                  </Button> */}
+                  <Button size="sm" asChild>
+                    <Link href="www.qiblatayntravels.com">
+                      <ExternalLink className="h-4 w-4 mr-1" />
+                      Demo
+                    </Link>
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Project 2 */}
             <Card className="overflow-hidden">
               <div className="relative h-48">
                 <Image src="/placeholder.svg?height=200&width=400" alt="Project 1" fill className="object-cover" />
@@ -148,7 +182,7 @@ export default function Home() {
               </CardContent>
             </Card>
 
-            {/* Project 2 */}
+            {/* Project 3 */}
             <Card className="overflow-hidden">
               <div className="relative h-48">
                 <Image src="/placeholder.svg?height=200&width=400" alt="Project 2" fill className="object-cover" />
@@ -181,7 +215,7 @@ export default function Home() {
               </CardContent>
             </Card>
 
-            {/* Project 3 */}
+            {/* Project 4 */}
             <Card className="overflow-hidden">
               <div className="relative h-48">
                 <Image src="/placeholder.svg?height=200&width=400" alt="Project 3" fill className="object-cover" />
