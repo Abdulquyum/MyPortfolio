@@ -142,7 +142,7 @@ export default function Home() {
                     </Link>
                   </Button> */}
                   <Button size="sm" asChild>
-                    <Link href="www.qiblatayntravels.com">
+                    <Link href="https://www.qiblatayntravels.com">
                       <ExternalLink className="h-4 w-4 mr-1" />
                       Demo
                     </Link>
