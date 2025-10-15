@@ -118,7 +118,7 @@ export default function Home() {
             {/* project 1 */}
             <Card className="overflow-hidden">
               <div className="relative h-48">
-                <Image src="/placeholder.svg?height=200&width=400" alt="Project 1" fill className="object-cover" />
+                <Image src="https://qiblatayntravels.com/assets/images/logo.png" alt="Project 1" fill className="object-cover" />
               </div>
               <CardContent className="p-6">
                 <h3 className="text-xl font-bold mb-2">Qiblatayn Travels</h3>
