@@ -187,7 +187,7 @@ export default function Home() {
             {/* Project 3 */}
             <Card className="overflow-hidden">
               <div className="relative h-48">
-                <Image src="/placeholder.svg?height=200&width=400" alt="Project 2" fill className="object-cover" />
+                <Image src="https://resourcehub-0szu.onrender.com/static/images/logo.png" alt="Project 2" fill className="object-cover" />
               </div>
               <CardContent className="p-6">
                 <h3 className="text-xl font-bold mb-2">ResourceHub</h3>
