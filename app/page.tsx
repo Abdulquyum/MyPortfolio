@@ -1,13 +1,16 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
-import { Github, Mail, FileText, ExternalLink, Linkedin } from "lucide-react"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Github, Mail, FileText, ExternalLink, Linkedin, Loader2 } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 import { useState } from "react"
 import emailjs from "@emailjs/browser"
 import { toast } from "sonner"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+import { Textarea } from "@/components/ui/textarea"
 
 export default function Home() {
   return (
@@ -43,7 +46,7 @@ export default function Home() {
             <h1 className="text-4xl md:text-6xl font-bold tracking-tight">
               Hi, I'm <span className="text-primary">Ajumobi Abdulquyum</span>
             </h1>
-            <p className="text-xl text-muted-foreground">
+            <p className="text-xl text-muted-foreground bg-gradient-to-r from-primary to-foreground bg-clip-text text-transparent">
               Full Stack Developer specializing in building exceptional digital experiences
             </p>
             <div className="flex gap-4 pt-4">
@@ -60,7 +63,7 @@ export default function Home() {
           </div>
           <div className="flex-1 flex justify-center">
             <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-primary">
-              <Image src="/abdulquyum.jpg?height=320&width=320" alt="Profile" fill className="object-cover" priority />
+              <Image src="/passport.jpg?height=320&width=320" alt="Profile" fill className="object-cover" priority />
             </div>
           </div>
         </section>
@@ -103,10 +106,10 @@ export default function Home() {
               </div>
               <div className="pt-4">
                 <Button variant="outline" asChild>
-                  <Link href="../public/updated-Ajumobi-Abdulquyum-CV.pdf">
+                  <a href="/updated-Ajumobi-Abdulquyum-CV.pdf" download="Ajumobi-Abdulquyum-CV.pdf">
                     <FileText className="mr-2 h-4 w-4" />
                     Download Resume
-                  </Link>
+                  </a>
                 </Button>
               </div>
             </div>
@@ -118,7 +121,77 @@ export default function Home() {
           <h2 className="text-3xl font-bold mb-8 text-center">My Projects</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {/* project 1 */}
-            <Card className="overflow-hidden">
+            <Card className="overflow-hidden border transition-transform duration-300 hover:scale-105 hover:shadow-xl">
+              <div className="relative h-48">
+                <Image src="Noun_inventory_home.png" alt="Project 1" fill className="object-cover" />
+              </div>
+              <CardContent className="p-6">
+                <h3 className="text-xl font-bold mb-2">Institution Inventory System</h3>
+                <p className="text-muted-foreground mb-4">
+                  A web-based inventory management system designed to streamline the tracking and management of
+                  assets within an institution. It provides features for adding, updating, and monitoring inventory items,
+                  ensuring efficient resource management.
+                </p>
+                <div className="flex flex-wrap gap-2 mb-4">
+                  <span className="bg-primary/10 text-primary text-xs px-2 py-1 rounded">HTML/CSS</span>
+                  <span className="bg-primary/10 text-primary text-xs px-2 py-1 rounded">Bootstrap</span>
+                  <span className="bg-primary/10 text-primary text-xs px-2 py-1 rounded">PHP</span>
+                  <span className="bg-primary/10 text-primary text-xs px-2 py-1 rounded">Laravel</span>
+                  <span className="bg-primary/10 text-primary text-xs px-2 py-1 rounded">MySQL</span>
+                </div>
+                <div className="flex gap-3">
+                  {/* <Button size="sm" variant="outline" asChild>
+                    <Link href="https://github.com/Abdulquyum/Inventory-Management-System">
+                      <Github className="h-4 w-4 mr-1" />
+                      Code
+                    </Link>
+                  </Button> */}
+                  <Button size="sm" asChild>
+                    <Link href="https://inventory-management-system-3-8tet.onrender.com/">
+                      <ExternalLink className="h-4 w-4 mr-1" />
+                      Demo
+                    </Link>
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* project 2 */}
+            <Card className="overflow-hidden border transition-transform duration-300 hover:scale-105 hover:shadow-xl">
+              <div className="relative h-48">
+                <Image src="imdb_home.png" alt="Project 2" fill className="object-cover" />
+              </div>
+              <CardContent className="p-6">
+                <h3 className="text-xl font-bold mb-2">Ai-Driven Image to Item extractor Master tool</h3>
+                <p className="text-muted-foreground mb-4">
+                  A web application that utilizes AI technology to extract item master data from images. Users can upload images containing item information, and the tool processes the images to extract relevant data, such as item names, descriptions, and other attributes. This streamlines the process of creating and managing item master records.
+                </p>
+                <div className="flex flex-wrap gap-2 mb-4">
+                  <span className="bg-primary/10 text-primary text-xs px-2 py-1 rounded">HTML/CSS</span>
+                  <span className="bg-primary/10 text-primary text-xs px-2 py-1 rounded">Bootstrap</span>
+                  <span className="bg-primary/10 text-primary text-xs px-2 py-1 rounded">Python</span>
+                  <span className="bg-primary/10 text-primary text-xs px-2 py-1 rounded">Flask</span>
+                  <span className="bg-primary/10 text-primary text-xs px-2 py-1 rounded">Gemini AI</span>
+                </div>
+                <div className="flex gap-3">
+                  {/* <Button size="sm" variant="outline" asChild>
+                    <Link href="https://github.com/Adebimpe0/gdss-2026-imdb-tool">
+                      <Github className="h-4 w-4 mr-1" />
+                      Code
+                    </Link>
+                  </Button> */}
+                  <Button size="sm" asChild>
+                    <Link href="https://gdss-2026-imdb-tool.onrender.com/">
+                      <ExternalLink className="h-4 w-4 mr-1" />
+                      Demo
+                    </Link>
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+            
+            {/* project 3 */}
+            <Card className="overflow-hidden border transition-transform duration-300 hover:scale-105 hover:shadow-xl">
               <div className="relative h-48">
                 <Image src="https://qiblatayntravels.com/assets/images/logo.png" alt="Project 1" fill className="object-cover" />
               </div>
@@ -151,8 +224,8 @@ export default function Home() {
               </CardContent>
             </Card>
 
-            {/* Project 2 */}
-            <Card className="overflow-hidden">
+            {/* Project 4 */}
+            <Card className="overflow-hidden border transition-transform duration-300 hover:scale-105 hover:shadow-xl">
               <div className="relative h-48">
                 <Image src="https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8bGFwdG9wfGVufDB8fDB8fHww&auto=format&fit=crop&q=60&w=600" alt="Project 1" fill className="object-cover" />
               </div>
@@ -184,8 +257,8 @@ export default function Home() {
               </CardContent>
             </Card>
 
-            {/* Project 3 */}
-            <Card className="overflow-hidden">
+            {/* Project 5 */}
+            <Card className="overflow-hidden border transition-transform duration-300 hover:scale-105 hover:shadow-xl">
               <div className="relative h-48">
                 <Image src="https://resourcehub-0szu.onrender.com/static/images/logo.png" alt="Project 2" fill className="object-cover" />
               </div>
@@ -217,8 +290,8 @@ export default function Home() {
               </CardContent>
             </Card>
 
-            {/* Project 4 */}
-            <Card className="overflow-hidden">
+            {/* Project 6 */}
+            <Card className="overflow-hidden border transition-transform duration-300 hover:scale-105 hover:shadow-xl">
               <div className="relative h-48">
                 <Image src="https://www.odiolowoojuwoye.lg.gov.ng/public/image/logo2.png" alt="Project 3" fill className="object-cover" />
               </div>
@@ -266,7 +339,7 @@ export default function Home() {
               title="Frontend Development"
               items={["React", "HTML/CSS", "JavaScript", "TypeScript", "Bootstrap"]}
             />
-            <SkillCard title="Backend Development" items={["PHP", "Laravel", "Python", "Flask", "RESTful APIs"]} />
+            <SkillCard title="Backend Development" items={["PHP", "Laravel", "Python", "Flask", "Node.js", "RESTful APIs"]} />
             <SkillCard title="Databases" items={["MongoDB", "PostgreSQL", "MySQL", "Firebase"]} />
             <SkillCard title="DevOps & Tools" items={["Git", "CLI", "Trello", "unix system", "Vercel"]} />
           </div>
@@ -285,13 +358,13 @@ export default function Home() {
                 </div>
                 <div className="flex items-center gap-3">
                   <Linkedin className="h-5 w-5 text-primary" />
-                  <Link href="#" className="hover:text-primary">
+                  <Link href="https://linkedin.com/in/abdqooyum" target="_blank" rel="noopener noreferrer" className="hover:text-primary">
                     linkedin.com/in/abdqooyum
                   </Link>
                 </div>
                 <div className="flex items-center gap-3">
                   <Github className="h-5 w-5 text-primary" />
-                  <Link href="#" className="hover:text-primary">
+                  <Link href="https://github.com/Abdulquyum" target="_blank" rel="noopener noreferrer" className="hover:text-primary">
                     github.com/Abdulquyum
                   </Link>
                 </div>
@@ -312,15 +385,15 @@ export default function Home() {
         <div className="container flex flex-col md:flex-row justify-between items-center">
           <p className="text-sm text-muted-foreground">© {new Date().getFullYear()} Abdulquyum. All rights reserved.</p>
           <div className="flex gap-4 mt-4 md:mt-0">
-            <Link href="github.com/Abdulquyum" className="text-muted-foreground hover:text-primary">
+            <Link href="https://github.com/Abdulquyum" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary">
               <Github className="h-5 w-5" />
               <span className="sr-only">GitHub</span>
             </Link>
-            <Link href="#" className="text-muted-foreground hover:text-primary">
+            <Link href="https://linkedin.com/in/abdqooyum" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary">
               <Linkedin className="h-5 w-5" />
               <span className="sr-only">LinkedIn</span>
             </Link>
-            <Link href="mailto:abdulquyumajumobi@gmail.com" className="text-muted-foreground hover:text-primary">
+            <Link href="mailto:ajumobiabdulquyum@gmail.com" className="text-muted-foreground hover:text-primary">
               <Mail className="h-5 w-5" />
               <span className="sr-only">Email</span>
             </Link>
@@ -333,16 +406,17 @@ export default function Home() {
 
 function SkillCard({ title, items }: { title: string; items: string[] }) {
   return (
-    <Card className="p-6">
-      <h3 className="text-lg font-semibold mb-4">{title}</h3>
-      <ul className="space-y-2">
-        {items.map((item, index) => (
-          <li key={index} className="flex items-center gap-2">
-            <div className="h-1.5 w-1.5 rounded-full bg-primary" />
-            <span>{item}</span>
-          </li>
-        ))}
-      </ul>
+    <Card>
+      <CardHeader>
+        <CardTitle className="text-lg">{title}</CardTitle>
+      </CardHeader>
+      <CardContent>
+        <ul className="space-y-2 text-sm text-muted-foreground">
+          {items.map((item) => (
+            <li key={item}>{item}</li>
+          ))}
+        </ul>
+      </CardContent>
     </Card>
   )
 }
@@ -379,10 +453,10 @@ function ContactForm() {
       }
 
       await emailjs.send(
-        "service_wl3ol08",
-        "template_qt0qmz8",
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
         templateParams,
-        "fAzDDUZy5-HGNEf2b"
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!
       )
 
       toast.success("Message sent successfully!")
@@ -404,65 +478,55 @@ function ContactForm() {
     <form onSubmit={handleSubmit} className="space-y-4">
       <div className="grid grid-cols-2 gap-4">
         <div className="space-y-2">
-          <label htmlFor="name" className="text-sm font-medium">
-            Name
-          </label>
-          <input
+          <Label htmlFor="name">Name</Label>
+          <Input
             id="name"
             name="name"
             value={formData.name}
             onChange={handleChange}
             required
-            className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
             placeholder="Your name"
           />
         </div>
         <div className="space-y-2">
-          <label htmlFor="email" className="text-sm font-medium">
-            Email
-          </label>
-          <input
+          <Label htmlFor="email">Email</Label>
+          <Input
             id="email"
             name="email"
             type="email"
             value={formData.email}
             onChange={handleChange}
             required
-            className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
             placeholder="Your email"
           />
         </div>
       </div>
       <div className="space-y-2">
-        <label htmlFor="subject" className="text-sm font-medium">
-          Subject
-        </label>
-        <input
+        <Label htmlFor="subject">Subject</Label>
+        <Input
           id="subject"
           name="subject"
           value={formData.subject}
           onChange={handleChange}
           required
-          className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
           placeholder="Subject"
         />
       </div>
       <div className="space-y-2">
-        <label htmlFor="message" className="text-sm font-medium">
-          Message
-        </label>
-        <textarea
+        <Label htmlFor="message">Message</Label>
+        <Textarea
           id="message"
           name="message"
           value={formData.message}
           onChange={handleChange}
           required
-          className="flex min-h-[120px] w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
           placeholder="Your message"
+          className="min-h-[120px]"
         />
       </div>
       <Button type="submit" className="w-full" disabled={isSubmitting}>
-        {isSubmitting ? "Sending..." : "Send Message"}
+        {isSubmitting && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+        Send Message
       </Button>
     </form>
   )
