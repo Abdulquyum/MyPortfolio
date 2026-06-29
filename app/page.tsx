@@ -1,41 +1,129 @@
 "use client"
 
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Github, Mail, FileText, ExternalLink, Linkedin, Loader2 } from "lucide-react"
+import emailjs from "@emailjs/browser"
+import { ExternalLink, FileText, Github, Linkedin, Loader2, Mail, Moon, Sun } from "lucide-react"
+import { useTheme } from "next-themes"
 import Image from "next/image"
 import Link from "next/link"
 import { useState } from "react"
-import emailjs from "@emailjs/browser"
 import { toast } from "sonner"
+
+import { Button } from "@/components/ui/button"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
+
+const projects = [
+  {
+    title: "Institution Inventory System",
+    description:
+      "A web-based inventory management system to streamline tracking and management of institutional assets, ensuring efficient resource management.",
+    image: "/Noun_inventory_home.png",
+    tags: ["PHP", "Laravel", "MySQL", "Bootstrap", "HTML/CSS"],
+    demoUrl: "https://inventory-management-system-3-8tet.onrender.com/",
+    codeUrl: null,
+  },
+  {
+    title: "AI-Driven Image to Item Extractor",
+    description:
+      "A tool that uses AI to extract item master data from images, streamlining the process of creating and managing item master records.",
+    image: "/imdb_home.png",
+    tags: ["Python", "Flask", "Gemini AI", "Bootstrap", "HTML/CSS"],
+    demoUrl: "https://gdss-2026-imdb-tool.onrender.com/",
+    codeUrl: null,
+  },
+  {
+    title: "EasyLendPC",
+    description: "A platform that allows users to rent and lend computers to each other.",
+    image:
+      "https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8bGFwdG9wfGVufDB8fDB8fHww&auto=format&fit=crop&q=60&w=600",
+    tags: ["Python", "Django", "SQLite", "HTML/CSS"],
+    demoUrl: null,
+    codeUrl: "https://github.com/Abdulquyum/EasyLendPC",
+  },
+  {
+    title: "ResourceHub",
+    description: "A platform that allows users to share and find educational resources with each other.",
+    image: "https://resourcehub-0szu.onrender.com/static/images/logo.png",
+    tags: ["Python", "Flask", "MySQL", "HTML/CSS"],
+    demoUrl: "https://resourcehub-0szu.onrender.com/",
+    codeUrl: "https://github.com/NiniolaX/ResourceHub",
+  },
+  {
+    title: "Odiolowo Connect",
+    description:
+      "A platform for residents in Odi-olowo to register for youth empowerment programs and access local opportunities.",
+    image: "https://www.odiolowoojuwoye.lg.gov.ng/public/image/logo2.png",
+    tags: ["PHP", "Laravel", "MySQL", "Bootstrap", "HTML/CSS"],
+    demoUrl: null,
+    codeUrl: "https://github.com/Abdulquyum/odiolowoConnect",
+  },
+  {
+    title: "Qiblatyn Travels",
+    description:
+      "A professional travel and tour website for booking and inquiries, featuring a clean and user-friendly interface.",
+    image: "https://qiblatayntravels.com/assets/images/logo.png",
+    tags: ["PHP", "Laravel", "MySQL", "Bootstrap", "HTML/CSS"],
+    demoUrl: "https://qiblatayntravels.com/",
+    codeUrl: null,
+  },
+]
+
+function ThemeToggle() {
+  const { setTheme } = useTheme()
+
+  return (
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button variant="outline" size="icon">
+          <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+          <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+          <span className="sr-only">Toggle theme</span>
+        </Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent align="end">
+        <DropdownMenuItem onClick={() => setTheme("light")}>Light</DropdownMenuItem>
+        <DropdownMenuItem onClick={() => setTheme("dark")}>Dark</DropdownMenuItem>
+        <DropdownMenuItem onClick={() => setTheme("system")}>System</DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
+  )
+}
 
 export default function Home() {
   return (
     <div className="min-h-screen bg-background">
       {/* Navigation */}
       <header className="sticky top-0 z-40 w-full border-b bg-background/95 backdrop-blur">
-        <div className="container flex h-16 items-center justify-between">
-          <div className="font-bold text-xl">Portfolio</div>
-          <nav className="hidden md:flex gap-6">
-            <Link href="#about" className="text-sm font-medium transition-colors hover:text-primary">
+        <div className="container flex h-16 items-center">
+          <Link href="#" className="mr-6 flex items-center space-x-2">
+            <span className="font-bold">MyPortfolio</span>
+          </Link>
+          <nav className="flex items-center gap-6 text-sm">
+            <Link href="#about" className="font-medium text-muted-foreground transition-colors hover:text-primary">
               About
             </Link>
-            <Link href="#projects" className="text-sm font-medium transition-colors hover:text-primary">
+            <Link href="#projects" className="font-medium text-muted-foreground transition-colors hover:text-primary">
               Projects
             </Link>
-            <Link href="#skills" className="text-sm font-medium transition-colors hover:text-primary">
+            <Link href="#skills" className="font-medium text-muted-foreground transition-colors hover:text-primary">
               Skills
             </Link>
-            <Link href="#contact" className="text-sm font-medium transition-colors hover:text-primary">
+            <Link href="#contact" className="font-medium text-muted-foreground transition-colors hover:text-primary">
               Contact
             </Link>
           </nav>
-          {/* <Button variant="outline" size="sm">
-            Resume
-          </Button> */}
+          <div className="flex flex-1 items-center justify-end gap-4">
+            <ThemeToggle />
+          </div>
         </div>
       </header>
 
@@ -46,7 +134,7 @@ export default function Home() {
             <h1 className="text-4xl md:text-6xl font-bold tracking-tight">
               Hi, I'm <span className="text-primary">Ajumobi Abdulquyum</span>
             </h1>
-            <p className="text-xl text-muted-foreground bg-gradient-to-r from-primary to-foreground bg-clip-text text-transparent">
+            <p className="text-xl text-muted-foreground">
               Full Stack Developer specializing in building exceptional digital experiences
             </p>
             <div className="flex gap-4 pt-4">
@@ -62,8 +150,8 @@ export default function Home() {
             </div>
           </div>
           <div className="flex-1 flex justify-center">
-            <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-primary">
-              <Image src="/passport.jpg?height=320&width=320" alt="Profile" fill className="object-cover" priority />
+            <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-primary shadow-lg">
+              <Image src="/passport.jpeg?height=320&width=320" alt="Profile" fill className="object-cover" priority />
             </div>
           </div>
         </section>
@@ -71,23 +159,23 @@ export default function Home() {
         {/* About Section */}
         <section id="about" className="py-16 scroll-mt-16">
           <h2 className="text-3xl font-bold mb-8 text-center">About Me</h2>
-          <div className="grid md:grid-cols-2 gap-8 items-center">
-            <div>
-              <p className="text-lg mb-4">
+          <div className="grid md:grid-cols-5 gap-10 items-center">
+            <div className="md:col-span-3">
+              <p className="text-lg text-muted-foreground mb-4">
                 I'm a passionate developer with a strong foundation in web technologies and a keen eye for design. With
                 several years of experience in the industry, I've worked on a variety of projects ranging from small
                 business websites to complex enterprise applications.
               </p>
-              <p className="text-lg mb-4">
+              <p className="text-lg text-muted-foreground mb-4">
                 My approach combines technical expertise with creative problem-solving to deliver solutions that are not
                 only functional but also intuitive and enjoyable to use.
               </p>
-              <p className="text-lg">
+              <p className="text-lg text-muted-foreground">
                 When I'm not coding, you can find me exploring new technologies, contributing to open-source projects,
                 or building side projects.
               </p>
             </div>
-            <div className="space-y-4">
+            <div className="md:col-span-2 space-y-4 rounded-lg border bg-card p-6 text-card-foreground shadow-sm">
               <div className="flex items-center gap-2">
                 <span className="font-semibold min-w-[100px]">Name:</span>
                 <span>Ajumobi Abdulquyum</span>
@@ -119,211 +207,13 @@ export default function Home() {
         {/* Projects Section */}
         <section id="projects" className="py-16 scroll-mt-16">
           <h2 className="text-3xl font-bold mb-8 text-center">My Projects</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {/* project 1 */}
-            <Card className="overflow-hidden border transition-transform duration-300 hover:scale-105 hover:shadow-xl">
-              <div className="relative h-48">
-                <Image src="Noun_inventory_home.png" alt="Project 1" fill className="object-cover" />
-              </div>
-              <CardContent className="p-6">
-                <h3 className="text-xl font-bold mb-2">Institution Inventory System</h3>
-                <p className="text-muted-foreground mb-4">
-                  A web-based inventory management system designed to streamline the tracking and management of
-                  assets within an institution. It provides features for adding, updating, and monitoring inventory items,
-                  ensuring efficient resource management.
-                </p>
-                <div className="flex flex-wrap gap-2 mb-4">
-                  <span className="bg-primary/10 text-primary text-xs px-2 py-1 rounded">HTML/CSS</span>
-                  <span className="bg-primary/10 text-primary text-xs px-2 py-1 rounded">Bootstrap</span>
-                  <span className="bg-primary/10 text-primary text-xs px-2 py-1 rounded">PHP</span>
-                  <span className="bg-primary/10 text-primary text-xs px-2 py-1 rounded">Laravel</span>
-                  <span className="bg-primary/10 text-primary text-xs px-2 py-1 rounded">MySQL</span>
-                </div>
-                <div className="flex gap-3">
-                  {/* <Button size="sm" variant="outline" asChild>
-                    <Link href="https://github.com/Abdulquyum/Inventory-Management-System">
-                      <Github className="h-4 w-4 mr-1" />
-                      Code
-                    </Link>
-                  </Button> */}
-                  <Button size="sm" asChild>
-                    <Link href="https://inventory-management-system-3-8tet.onrender.com/">
-                      <ExternalLink className="h-4 w-4 mr-1" />
-                      Demo
-                    </Link>
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
-
-            {/* project 2 */}
-            <Card className="overflow-hidden border transition-transform duration-300 hover:scale-105 hover:shadow-xl">
-              <div className="relative h-48">
-                <Image src="imdb_home.png" alt="Project 2" fill className="object-cover" />
-              </div>
-              <CardContent className="p-6">
-                <h3 className="text-xl font-bold mb-2">Ai-Driven Image to Item extractor Master tool</h3>
-                <p className="text-muted-foreground mb-4">
-                  A web application that utilizes AI technology to extract item master data from images. Users can upload images containing item information, and the tool processes the images to extract relevant data, such as item names, descriptions, and other attributes. This streamlines the process of creating and managing item master records.
-                </p>
-                <div className="flex flex-wrap gap-2 mb-4">
-                  <span className="bg-primary/10 text-primary text-xs px-2 py-1 rounded">HTML/CSS</span>
-                  <span className="bg-primary/10 text-primary text-xs px-2 py-1 rounded">Bootstrap</span>
-                  <span className="bg-primary/10 text-primary text-xs px-2 py-1 rounded">Python</span>
-                  <span className="bg-primary/10 text-primary text-xs px-2 py-1 rounded">Flask</span>
-                  <span className="bg-primary/10 text-primary text-xs px-2 py-1 rounded">Gemini AI</span>
-                </div>
-                <div className="flex gap-3">
-                  {/* <Button size="sm" variant="outline" asChild>
-                    <Link href="https://github.com/Adebimpe0/gdss-2026-imdb-tool">
-                      <Github className="h-4 w-4 mr-1" />
-                      Code
-                    </Link>
-                  </Button> */}
-                  <Button size="sm" asChild>
-                    <Link href="https://gdss-2026-imdb-tool.onrender.com/">
-                      <ExternalLink className="h-4 w-4 mr-1" />
-                      Demo
-                    </Link>
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
-            
-            {/* project 3 */}
-            <Card className="overflow-hidden border transition-transform duration-300 hover:scale-105 hover:shadow-xl">
-              <div className="relative h-48">
-                <Image src="https://qiblatayntravels.com/assets/images/logo.png" alt="Project 1" fill className="object-cover" />
-              </div>
-              <CardContent className="p-6">
-                <h3 className="text-xl font-bold mb-2">Qiblatayn Travels</h3>
-                <p className="text-muted-foreground mb-4">
-                  Specialize in Hajj and Umrah Packages. I implement the Registration forms for the Hajj and Umrrah Pilgrims.
-                </p>
-                <div className="flex flex-wrap gap-2 mb-4">
-                  <span className="bg-primary/10 text-primary text-xs px-2 py-1 rounded">HTML/CSS</span>
-                  <span className="bg-primary/10 text-primary text-xs px-2 py-1 rounded">Bootstrap</span>
-                  <span className="bg-primary/10 text-primary text-xs px-2 py-1 rounded">PHP</span>
-                  <span className="bg-primary/10 text-primary text-xs px-2 py-1 rounded">Laravel</span>
-                  <span className="bg-primary/10 text-primary text-xs px-2 py-1 rounded">MariaDB</span>
-                </div>
-                <div className="flex gap-3">
-                  {/* <Button size="sm" variant="outline" asChild>
-                    <Link href="https://github.com/Abdulquyum/">
-                      <Github className="h-4 w-4 mr-1" />
-                      Code
-                    </Link>
-                  </Button> */}
-                  <Button size="sm" asChild>
-                    <Link href="https://www.qiblatayntravels.com">
-                      <ExternalLink className="h-4 w-4 mr-1" />
-                      Demo
-                    </Link>
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
-
-            {/* Project 4 */}
-            <Card className="overflow-hidden border transition-transform duration-300 hover:scale-105 hover:shadow-xl">
-              <div className="relative h-48">
-                <Image src="https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8bGFwdG9wfGVufDB8fDB8fHww&auto=format&fit=crop&q=60&w=600" alt="Project 1" fill className="object-cover" />
-              </div>
-              <CardContent className="p-6">
-                <h3 className="text-xl font-bold mb-2">EasyLendPC</h3>
-                <p className="text-muted-foreground mb-4">
-                  EasyLendPC is a platform that allows users to rent and lend computers to each other.
-                </p>
-                <div className="flex flex-wrap gap-2 mb-4">
-                  <span className="bg-primary/10 text-primary text-xs px-2 py-1 rounded">HTML/CSS</span>
-                  <span className="bg-primary/10 text-primary text-xs px-2 py-1 rounded">Python</span>
-                  <span className="bg-primary/10 text-primary text-xs px-2 py-1 rounded">Django</span>
-                  <span className="bg-primary/10 text-primary text-xs px-2 py-1 rounded">SQLite</span>
-                </div>
-                <div className="flex gap-3">
-                  <Button size="sm" variant="outline" asChild>
-                    <Link href="https://github.com/Abdulquyum/EasyLendPC">
-                      <Github className="h-4 w-4 mr-1" />
-                      Code
-                    </Link>
-                  </Button>
-                  <Button size="sm" asChild>
-                    <Link href="#">
-                      <ExternalLink className="h-4 w-4 mr-1" />
-                      Demo
-                    </Link>
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
-
-            {/* Project 5 */}
-            <Card className="overflow-hidden border transition-transform duration-300 hover:scale-105 hover:shadow-xl">
-              <div className="relative h-48">
-                <Image src="https://resourcehub-0szu.onrender.com/static/images/logo.png" alt="Project 2" fill className="object-cover" />
-              </div>
-              <CardContent className="p-6">
-                <h3 className="text-xl font-bold mb-2">ResourceHub</h3>
-                <p className="text-muted-foreground mb-4">
-                  ResourceHub is a platform that allows users to share and find resources with each other.
-                </p>
-                <div className="flex flex-wrap gap-2 mb-4">
-                  <span className="bg-primary/10 text-primary text-xs px-2 py-1 rounded">HTML/CSS</span>
-                  <span className="bg-primary/10 text-primary text-xs px-2 py-1 rounded">Python</span>
-                  <span className="bg-primary/10 text-primary text-xs px-2 py-1 rounded">Flask</span>
-                  <span className="bg-primary/10 text-primary text-xs px-2 py-1 rounded">MySQL</span>
-                </div>
-                <div className="flex gap-3">
-                  <Button size="sm" variant="outline" asChild>
-                    <Link href="https://github.com/NiniolaX/ResourceHub">
-                      <Github className="h-4 w-4 mr-1" />
-                      Code
-                    </Link>
-                  </Button>
-                  <Button size="sm" asChild>
-                    <Link href="https://resourcehub-0szu.onrender.com/">
-                      <ExternalLink className="h-4 w-4 mr-1" />
-                      Demo
-                    </Link>
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
-
-            {/* Project 6 */}
-            <Card className="overflow-hidden border transition-transform duration-300 hover:scale-105 hover:shadow-xl">
-              <div className="relative h-48">
-                <Image src="https://www.odiolowoojuwoye.lg.gov.ng/public/image/logo2.png" alt="Project 3" fill className="object-cover" />
-              </div>
-              <CardContent className="p-6">
-                <h3 className="text-xl font-bold mb-2">Odiolowo Connect</h3>
-                <p className="text-muted-foreground mb-4">
-                  A website to ease access for residents in Odi-olowo, Providing them with a platform to register for youth empowerment programs.
-                </p>
-                <div className="flex flex-wrap gap-2 mb-4">
-                  <span className="bg-primary/10 text-primary text-xs px-2 py-1 rounded">HTML/CSS</span>
-                  <span className="bg-primary/10 text-primary text-xs px-2 py-1 rounded">Bootstrap</span>
-                  <span className="bg-primary/10 text-primary text-xs px-2 py-1 rounded">PHP</span>
-                  <span className="bg-primary/10 text-primary text-xs px-2 py-1 rounded">Laravel</span>
-                  <span className="bg-primary/10 text-primary text-xs px-2 py-1 rounded">MySQL</span>
-                </div>
-                <div className="flex gap-3">
-                  <Button size="sm" variant="outline" asChild>
-                    <Link href="https://github.com/Abdulquyum/odiolowoConnect">
-                      <Github className="h-4 w-4 mr-1" />
-                      Code
-                    </Link>
-                  </Button>
-                  <Button size="sm" asChild>
-                    <Link href="#">
-                      <ExternalLink className="h-4 w-4 mr-1" />
-                      Demo
-                    </Link>
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
+          <TooltipProvider>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {projects.map((project) => (
+                <ProjectCard key={project.title} {...project} />
+              ))}
+            </div>
+          </TooltipProvider>
           <div className="flex justify-center mt-8">
             <Button variant="outline" asChild>
               <Link href="https://github.com/Abdulquyum?tab=repositories">View All Projects</Link>
@@ -334,7 +224,7 @@ export default function Home() {
         {/* Skills Section */}
         <section id="skills" className="py-16 scroll-mt-16">
           <h2 className="text-3xl font-bold mb-8 text-center">My Skills</h2>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
             <SkillCard
               title="Frontend Development"
               items={["React", "HTML/CSS", "JavaScript", "TypeScript", "Bootstrap"]}
@@ -348,7 +238,7 @@ export default function Home() {
         {/* Contact Section */}
         <section id="contact" className="py-16 scroll-mt-16">
           <h2 className="text-3xl font-bold mb-8 text-center">Get In Touch</h2>
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 gap-16">
             <div className="space-y-6">
               <h3 className="text-xl font-semibold">Contact Information</h3>
               <div className="space-y-4">
@@ -404,19 +294,77 @@ export default function Home() {
   )
 }
 
+type ProjectCardProps = {
+  title: string
+  description: string
+  image: string
+  tags: string[]
+  demoUrl: string | null
+  codeUrl: string | null
+}
+
+function ProjectCard({ title, description, image, tags, demoUrl, codeUrl }: ProjectCardProps) {
+  return (
+    <Card className="overflow-hidden flex flex-col group">
+      <div className="relative h-48">
+        <Image src={image} alt={title} fill className="object-cover transition-transform duration-300 group-hover:scale-105" />
+      </div>
+      <CardContent className="p-6 flex flex-col flex-grow">
+        <h3 className="text-xl font-bold mb-2">{title}</h3>
+        <p className="text-muted-foreground mb-4 text-sm flex-grow">{description}</p>
+        <div className="flex flex-wrap gap-2 mb-4">
+          {tags.map((tag) => (
+            <span key={tag} className="bg-secondary text-secondary-foreground text-xs px-2 py-1 rounded-full">
+              {tag}
+            </span>
+          ))}
+        </div>
+        <div className="flex gap-3 mt-auto">
+          {demoUrl ? (
+            <Button size="sm" asChild>
+              <a href={demoUrl} target="_blank" rel="noopener noreferrer">
+                <ExternalLink className="h-4 w-4 mr-1" />
+                Demo
+              </a>
+            </Button>
+          ) : (
+            <Tooltip>
+              <TooltipTrigger>
+                <Button size="sm" disabled>
+                  <ExternalLink className="h-4 w-4 mr-1" />
+                  Demo
+                </Button>
+              </TooltipTrigger>
+              <TooltipContent>
+                <p>Demo not available</p>
+              </TooltipContent>
+            </Tooltip>
+          )}
+          {codeUrl && (
+            <Button size="sm" variant="outline" asChild>
+              <a href={codeUrl} target="_blank" rel="noopener noreferrer">
+                <Github className="h-4 w-4 mr-1" />
+                Code
+              </a>
+            </Button>
+          )}
+        </div>
+      </CardContent>
+    </Card>
+  )
+}
+
 function SkillCard({ title, items }: { title: string; items: string[] }) {
   return (
-    <Card>
-      <CardHeader>
-        <CardTitle className="text-lg">{title}</CardTitle>
-      </CardHeader>
-      <CardContent>
-        <ul className="space-y-2 text-sm text-muted-foreground">
-          {items.map((item) => (
-            <li key={item}>{item}</li>
-          ))}
-        </ul>
-      </CardContent>
+    <Card className="p-6">
+      <h3 className="text-lg font-semibold mb-4">{title}</h3>
+      <div className="flex flex-wrap gap-2">
+        {items.map((item) => (
+          <span key={item} className="text-sm bg-secondary text-secondary-foreground px-3 py-1 rounded-full">
+            {item}
+          </span>
+        ))}
+      </div>
     </Card>
   )
 }
